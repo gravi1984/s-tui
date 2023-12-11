@@ -1,0 +1,23 @@
+name: stui-test
+summary: Stress-Terminal UI, monitor & stressing CPU from the terminal graphic.
+description: |
+  Monitoring your CPU temperature/utilization/frequency/power
+  Shows performance dips caused by thermal throttling
+  Built-in options for stressing the CPU (stress/stress-ng/FIRESTARTER)
+version: git
+grade: stable
+confinement: strict
+base: core22
+architectures:
+  - build-on: [amd64]
+
+apps:
+  stui:
+    command: bin/s-tui
+    # plugs: [home, network, network-bind, removable-media]
+
+parts:
+  stui:
+    plugin: python
+    python-packages: [urwid, psutil]
+    source: https://github.com/gravi1984/s-tui.git
